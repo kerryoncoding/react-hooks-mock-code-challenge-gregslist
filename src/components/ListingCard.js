@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 
-function ListingCard({image, description, location }) {
+function ListingCard({image, description, location, id, updateDeletedList }) {
 
   const [isLiked, setIsLiked] = useState(true)
  
@@ -10,8 +10,12 @@ function ListingCard({image, description, location }) {
 
 
   //I AM HERE>.. need to handle delete better
-  function handleDelete(e){
-    console.log(e)
+  function handleDelete(){
+    fetch(`http://localhost:6001/listings/${id}`, {
+      method: "DELETE"
+    })
+    .then(resp=> resp.json())
+    .then(item => updateDeletedList(item))
   }
 
 

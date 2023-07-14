@@ -7,13 +7,22 @@ function ListingsContainer({data}) {
   let listings = data.map((item)=> {
     return( 
     <ListingCard
-        key = {item.id}
+        key={item.id}
+        id = {item.id}
         description= {item.description}
         image = {item.image}
         location = {item.location}
+        updateDeletedList = {updateDeletedList}
     />
     )
   })
+
+
+  //// not sure if this is working...
+  function updateDeletedList(item){
+    console.log(item)
+
+  }
 
   return (
     <main>
