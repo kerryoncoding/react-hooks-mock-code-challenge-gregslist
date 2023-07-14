@@ -8,17 +8,13 @@ function ListingCard({image, description, location, id, updateDeletedList }) {
     setIsLiked(!isLiked) 
   }
 
-
-  //I AM HERE>.. need to handle delete better
   function handleDelete(){
     fetch(`http://localhost:6001/listings/${id}`, {
       method: "DELETE"
     })
     .then(resp=> resp.json())
-    .then(item => updateDeletedList(item))
+    .then(() => updateDeletedList(id))
   }
-
-
 
   return (
     <li className="card">

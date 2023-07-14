@@ -14,13 +14,17 @@ function App() {
     })
   },[])
 
+ function HandleUpdatedItems(UpdatedItems){
+  console.log("update here", UpdatedItems)
+  setDataList(UpdatedItems)
+ }
 
 
 
   return (
     <div className="app">
       <Header />
-      <ListingsContainer data={dataList} />
+      <ListingsContainer data={dataList} handleUpdatedItems={HandleUpdatedItems} />
     </div>
   );
 }

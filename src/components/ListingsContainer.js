@@ -1,7 +1,7 @@
 import React from "react";
 import ListingCard from "./ListingCard";
 
-function ListingsContainer({data}) {
+function ListingsContainer({data, handleUpdatedItems}) {
   console.log(data)
 
   let listings = data.map((item)=> {
@@ -17,18 +17,16 @@ function ListingsContainer({data}) {
     )
   })
 
-
-  //// not sure if this is working...
-  function updateDeletedList(item){
-    console.log(item)
-
+  function updateDeletedList(deletedItem){
+    console.log(deletedItem)
+   const updatedItems = data.filter((item)=> item.id !== deletedItem)
+   handleUpdatedItems(updatedItems)
   }
-
+  
   return (
     <main>
       <ul className="cards">
         {listings}
-        {/* use the ListingCard component to display listings */}
       </ul>
     </main>
   );
