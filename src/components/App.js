@@ -14,17 +14,21 @@ function App() {
     })
   },[])
 
- function HandleUpdatedItems(UpdatedItems){
+ function handleUpdatedItems(UpdatedItems){
   console.log("update here", UpdatedItems)
   setDataList(UpdatedItems)
  }
 
-
+ function refineSearch(input){
+  console.log("top:", input)
+  let refinedArr = dataList.filter((item) => item.description.toLowerCase().includes(input.toLowerCase()))
+  setDataList(refinedArr)
+ }
 
   return (
     <div className="app">
-      <Header />
-      <ListingsContainer data={dataList} handleUpdatedItems={HandleUpdatedItems} />
+      <Header refineSearch={refineSearch}/>
+      <ListingsContainer data={dataList} handleUpdatedItems={handleUpdatedItems} />
     </div>
   );
 }

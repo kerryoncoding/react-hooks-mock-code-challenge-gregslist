@@ -1,7 +1,14 @@
 import React from "react";
 import Search from "./Search";
 
-function Header() {
+function Header({refineSearch}) {
+
+  function handleSearchInput(input){
+    refineSearch(input)
+  }
+
+
+
   return (
     <header>
       <h1>
@@ -10,7 +17,7 @@ function Header() {
         </span>
         gregslist
       </h1>
-      <Search />
+      <Search handleSearchInput={handleSearchInput} />
     </header>
   );
 }
